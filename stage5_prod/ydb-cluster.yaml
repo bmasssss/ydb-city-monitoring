@@ -1,0 +1,20 @@
+apiVersion: ydb.tech/v1alpha1
+kind: Storage
+metadata:
+  name: storage-minikube
+spec:
+  version: 21.4.30
+  nodes: 1
+  erasure: none
+  resources:
+    limits:
+      cpu: "1"
+      memory: "1Gi"
+---
+apiVersion: ydb.tech/v1alpha1
+kind: Database
+metadata:
+  name: database-minikube
+spec:
+  storageClusterRef:
+    name: storage-minikube
